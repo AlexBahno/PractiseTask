@@ -1,0 +1,6 @@
+framework module Pods_PractiseTask {
+  umbrella header "Pods-PractiseTask-umbrella.h"
+
+  export *
+  module * { export * }
+}
