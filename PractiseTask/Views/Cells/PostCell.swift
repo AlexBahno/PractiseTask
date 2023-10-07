@@ -144,7 +144,7 @@ class PostCell: UITableViewCell {
         ])
     }
     
-    func setupExpandButton() {
+    private func setupExpandButton() {
         expandButton.translatesAutoresizingMaskIntoConstraints = false
         stackView.addArrangedSubview(expandButton)
         

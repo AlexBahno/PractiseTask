@@ -14,8 +14,14 @@ enum NetworkError: Error {
 
 class APIManager {
     
-    static func getPosts(
-        completionHandler: @escaping (_ result: Result<PostsModel, Error>) -> Void
+    public static var shared = APIManager()
+    
+    private init() {
+        
+    }
+    
+    func getPosts(
+        completionHandler: @escaping (_ result: Result<PreviewPostsModel, Error>) -> Void
     ) {
         guard let url = URL(string: NetworkConstants.shared.serverAdress) else {
             completionHandler(.failure(NetworkError.urlError))
@@ -25,7 +31,28 @@ class APIManager {
         URLSession.shared.dataTask(with: url) { dataResponse, response, error in
             if error == nil,
                let data = dataResponse,
-               let resultData = try? JSONDecoder().decode(PostsModel.self, from: data) {
+               let resultData = try? JSONDecoder().decode(PreviewPostsModel.self, from: data) {
+                completionHandler(.success(resultData))
+            } else {
+                completionHandler(.failure(NetworkError.cannotParseData))
+            }
+        }
+        .resume()
+    }
+    
+    func getPostBy(id: Int,
+                   completionHandler: @escaping (_ result: Result<PostModel, Error>) -> Void
+    ) {
+        let urlString = "\(NetworkConstants.shared.postDetailsServerAddress)\(id).json"
+        guard let url = URL(string: urlString) else {
+            completionHandler(.failure(NetworkError.urlError))
+            return
+        }
+        
+        URLSession.shared.dataTask(with: url) { dataResponse, response, error in
+            if error == nil,
+               let data = dataResponse,
+               let resultData = try? JSONDecoder().decode(PostModel.self, from: data) {
                 completionHandler(.success(resultData))
             } else {
                 completionHandler(.failure(NetworkError.cannotParseData))

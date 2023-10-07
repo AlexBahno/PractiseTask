@@ -11,7 +11,7 @@ class MainViewModel {
     
     var isLoading: Observable<Bool> = Observable(false)
     var cellDataSource: Observable<[PostCellViewModel]> = Observable(nil)
-    var dataSource: PostsModel?
+    var dataSource: PreviewPostsModel?
     
     func numberOfRows() -> Int {
         return self.dataSource?.posts?.count ?? 0
@@ -22,7 +22,7 @@ class MainViewModel {
             return
         }
         isLoading.value = true
-        APIManager.getPosts { [weak self] result in
+        APIManager.shared.getPosts { [weak self] result in
             guard let strongSelf = self else {
                 return
             }

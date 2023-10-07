@@ -2,26 +2,25 @@
 //  Post.swift
 //  PractiseTask
 //
-//  Created by Alexandr Bahno on 05.10.2023.
+//  Created by Alexandr Bahno on 07.10.2023.
 //
 
 import Foundation
 
-// MARK: - PostsModel
-struct PostsModel: Codable {
-    let posts: [Post]?
+
+struct PostModel: Codable {
+    let post: Post?
 }
 
-// MARK: - Post
 struct Post: Codable {
     let postID, timeshamp: Int?
-    let title, previewText: String?
+    let title, text: String?
+    let postImage: String?
     let likesCount: Int?
 
     enum CodingKeys: String, CodingKey {
         case postID = "postId"
-        case timeshamp, title
-        case previewText = "preview_text"
+        case timeshamp, title, text, postImage
         case likesCount = "likes_count"
     }
 }

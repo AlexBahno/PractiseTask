@@ -14,16 +14,12 @@ class PostCellViewModel {
     var postDate: Int
     var isExpand: Bool = false
     
-    init(post: Post) {
+    init(post: PreviewPost) {
         title = post.title ?? ""
         previewText = post.previewText ?? ""
         likesCount = post.likesCount ?? 0
-        postDate = PostCellViewModel.daysBetween(
+        postDate = .daysBetween(
             start: Date(timeIntervalSince1970: TimeInterval(post.timeshamp ?? 0))
         )
-    }
-    
-    static func daysBetween(start: Date) -> Int {
-        return Calendar.current.dateComponents([.day], from: start, to: Date.now).day!
     }
 }

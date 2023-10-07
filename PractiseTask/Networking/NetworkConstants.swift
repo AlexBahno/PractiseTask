@@ -19,7 +19,7 @@ class NetworkConstants {
         "https://raw.githubusercontent.com/anton-natife/jsons/master/api/main.json"
     }
     
-    public var imageServerAddress: String {
+    public var postDetailsServerAddress: String {
         "https://raw.githubusercontent.com/anton-natife/jsons/master/api/posts/"
     }
 }

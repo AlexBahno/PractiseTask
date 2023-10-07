@@ -29,3 +29,9 @@ extension String {
         return Int(ceil(CGFloat(labelSize.height) / UIFont.systemFont(ofSize: 17).lineHeight))
   }
 }
+
+extension Int {
+    static func daysBetween(start: Date) -> Int {
+        return Calendar.current.dateComponents([.day], from: start, to: Date.now).day!
+    }
+}

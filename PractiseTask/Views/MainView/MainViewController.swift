@@ -31,7 +31,7 @@ class MainViewController: UIViewController {
     
     private func configure() {
         view.backgroundColor = .white
-        title = "Title"
+        title = "Home"
         
         setUpTableView()
         setUpActivityIndicator()
