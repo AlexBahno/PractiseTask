@@ -12,9 +12,12 @@ class PostDetailsViewController: UIViewController {
 
     var post: Post?
     
+    let scrollView = UIScrollView()
+    let container = UIStackView()
+    var likesAndDateView = UIStackView()
     let image = ScaledHeightImageView()
     let titleLabel = UILabel()
-    let textView = UITextView()
+    let textView = UILabel()
     let likesCount = UILabel()
     let postDate = UILabel()
     let activityIndicator = UIActivityIndicatorView()
@@ -40,7 +43,7 @@ class PostDetailsViewController: UIViewController {
     
     override func viewDidLoad() {
         super.viewDidLoad()
-        title = "Title"
+        title = "Post"
         view.backgroundColor = .white
         
         configure()
@@ -48,14 +51,12 @@ class PostDetailsViewController: UIViewController {
     }
     
     private func setupPost() {
-        
         guard let post = post else {
             return
         }
         DispatchQueue.main.async {
             self.image.sd_setImage(with: URL(string: post.postImage ?? ""))
             self.titleLabel.text = post.title
-            self.title = post.title
             self.textView.text = post.text
             self.likesCount.text = "♥️ \(post.likesCount ?? 0)"
             self.postDate.text = self.dateFormatter.string(from: Date(timeIntervalSince1970: TimeInterval(post.timeshamp ?? 0)))
@@ -63,23 +64,55 @@ class PostDetailsViewController: UIViewController {
     }
     
     private func configure() {
+        setupScrollView()
+        setupContainer()
         setupImage()
         setupTitle()
         setupText()
+        setupLikesAndDateView()
         setupLikesCount()
         setupPostDate()
         setUpActivityIndicator()
     }
     
+    private func setupScrollView() {
+        scrollView.translatesAutoresizingMaskIntoConstraints = false
+        view.addSubview(scrollView)
+        
+        scrollView.showsVerticalScrollIndicator = true
+        
+        NSLayoutConstraint.activate([
+            scrollView.topAnchor.constraint(equalTo: view.topAnchor),
+            scrollView.leadingAnchor.constraint(equalTo: view.leadingAnchor),
+            scrollView.trailingAnchor.constraint(equalTo: view.trailingAnchor),
+            scrollView.bottomAnchor.constraint(equalTo: view.bottomAnchor)
+        ])
+    }
+    
+    private func setupContainer() {
+        container.translatesAutoresizingMaskIntoConstraints = false
+        scrollView.addSubview(container)
+        
+        container.axis = .vertical
+        container.spacing = 15
+        
+        NSLayoutConstraint.activate([
+            container.topAnchor.constraint(equalTo: scrollView.topAnchor),
+            container.leadingAnchor.constraint(equalTo: scrollView.leadingAnchor),
+            container.trailingAnchor.constraint(equalTo: scrollView.trailingAnchor),
+            container.bottomAnchor.constraint(equalTo: scrollView.bottomAnchor)
+        ])
+    }
+    
     private func setupImage() {
         image.translatesAutoresizingMaskIntoConstraints = false
-        view.addSubview(image)
+        container.addArrangedSubview(image)
         
         image.contentMode = .scaleAspectFit
         image.image = UIImage(systemName: "photo")
         
         NSLayoutConstraint.activate([
-            image.topAnchor.constraint(equalTo: view.safeAreaLayoutGuide.topAnchor),
+            image.topAnchor.constraint(equalTo: container.safeAreaLayoutGuide.topAnchor),
             image.leadingAnchor.constraint(equalTo: view.leadingAnchor),
             image.trailingAnchor.constraint(equalTo: view.trailingAnchor),
             image.heightAnchor.constraint(lessThanOrEqualToConstant: view.height)
@@ -88,7 +121,7 @@ class PostDetailsViewController: UIViewController {
     
     private func setupTitle() {
         titleLabel.translatesAutoresizingMaskIntoConstraints = false
-        view.addSubview(titleLabel)
+        container.addArrangedSubview(titleLabel)
         
         titleLabel.font = .systemFont(ofSize: 24, weight: .medium)
         titleLabel.textColor = UIColor(red: 72/255, green: 82/255, blue: 94/255, alpha: 1)
@@ -96,55 +129,69 @@ class PostDetailsViewController: UIViewController {
         
         NSLayoutConstraint.activate([
             titleLabel.topAnchor.constraint(equalTo: image.bottomAnchor, constant: 15),
-            titleLabel.leadingAnchor.constraint(equalTo: view.leadingAnchor, constant: 20),
-            titleLabel.trailingAnchor.constraint(equalTo: view.trailingAnchor, constant: -20),
+            titleLabel.leadingAnchor.constraint(equalTo: container.leadingAnchor, constant: 20),
+            titleLabel.trailingAnchor.constraint(equalTo: container.trailingAnchor, constant: -20),
             titleLabel.heightAnchor.constraint(greaterThanOrEqualToConstant: 50)
         ])
     }
     
     private func setupText() {
         textView.translatesAutoresizingMaskIntoConstraints = false
-        view.addSubview(textView)
+        container.addArrangedSubview(textView)
         
         textView.font = .systemFont(ofSize: 17)
-        textView.isEditable = false
-        textView.isScrollEnabled = true
-        textView.isSelectable = false
         textView.textColor = UIColor(red: 133/255, green: 148/255, blue: 168/255, alpha: 1)
+        textView.numberOfLines = 0
+        textView.textAlignment = .justified
         
         NSLayoutConstraint.activate([
             textView.topAnchor.constraint(equalTo: titleLabel.bottomAnchor, constant: 15),
-            textView.leadingAnchor.constraint(equalTo: view.leadingAnchor, constant: 20),
-            textView.trailingAnchor.constraint(equalTo: view.trailingAnchor, constant: -20),
-            textView.bottomAnchor.constraint(equalTo: view.bottomAnchor, constant: -75)
+            textView.leadingAnchor.constraint(equalTo: container.leadingAnchor, constant: 20),
+            textView.trailingAnchor.constraint(equalTo: container.trailingAnchor, constant: -20)
+        ])
+    }
+    
+    private func setupLikesAndDateView() {
+        likesAndDateView.translatesAutoresizingMaskIntoConstraints = false
+        container.addArrangedSubview(likesAndDateView)
+        
+        likesAndDateView.axis = .horizontal
+        likesAndDateView.distribution = .fill
+        
+        NSLayoutConstraint.activate([
+            likesAndDateView.topAnchor.constraint(equalTo: textView.bottomAnchor, constant: 10),
+            likesAndDateView.leadingAnchor.constraint(equalTo: scrollView.leadingAnchor),
+            likesAndDateView.trailingAnchor.constraint(equalTo: scrollView.trailingAnchor),
+            likesAndDateView.bottomAnchor.constraint(equalTo: scrollView.bottomAnchor, constant: -20)
         ])
     }
     
     private func setupLikesCount() {
         likesCount.translatesAutoresizingMaskIntoConstraints = false
-        view.addSubview(likesCount)
+        likesAndDateView.addArrangedSubview(likesCount)
         
         likesCount.font = .systemFont(ofSize: 15)
         likesCount.textColor = UIColor(red: 133/255, green: 148/255, blue: 168/255, alpha: 1)
         
         NSLayoutConstraint.activate([
-            likesCount.topAnchor.constraint(equalTo: textView.bottomAnchor, constant: 15),
-            likesCount.leadingAnchor.constraint(equalTo: view.leadingAnchor, constant: 20),
-            likesCount.widthAnchor.constraint(greaterThanOrEqualToConstant: 50)
+            likesCount.topAnchor.constraint(equalTo: likesAndDateView.topAnchor),
+            likesCount.leadingAnchor.constraint(equalTo: likesAndDateView.leadingAnchor, constant: 20),
+            likesCount.heightAnchor.constraint(greaterThanOrEqualToConstant: 20)
         ])
     }
     
     private func setupPostDate() {
         postDate.translatesAutoresizingMaskIntoConstraints = false
-        view.addSubview(postDate)
+        likesAndDateView.addArrangedSubview(postDate)
         
         postDate.font = .systemFont(ofSize: 15)
+        postDate.textAlignment = .right
         postDate.textColor = UIColor(red: 133/255, green: 148/255, blue: 168/255, alpha: 1)
         
         NSLayoutConstraint.activate([
-            postDate.topAnchor.constraint(equalTo: textView.bottomAnchor, constant: 15),
+            postDate.topAnchor.constraint(equalTo: likesAndDateView.topAnchor),
             postDate.trailingAnchor.constraint(equalTo: view.trailingAnchor, constant: -15),
-            postDate.widthAnchor.constraint(greaterThanOrEqualToConstant: 50)
+            postDate.heightAnchor.constraint(greaterThanOrEqualToConstant: 20)
         ])
     }
     

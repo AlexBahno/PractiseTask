@@ -22,7 +22,6 @@ class ScaledHeightImageView: UIImageView {
 
             return CGSize(width: myViewWidth, height: scaledHeight)
         }
-
         return CGSize(width: -1.0, height: -1.0)
     }
 

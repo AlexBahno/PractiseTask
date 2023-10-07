@@ -21,6 +21,7 @@ class MainViewController: UIViewController {
         super.viewDidLoad()
         configure()
         bindViewModel()
+        viewModel.getData()
     }
         
     private func configure() {
@@ -30,7 +31,6 @@ class MainViewController: UIViewController {
         setUpTableView()
         setUpActivityIndicator()
         setUpSortButton()
-        viewModel.getData()
     }
     
     private func setUpTableView() {
@@ -50,7 +50,6 @@ class MainViewController: UIViewController {
             table.trailingAnchor.constraint(equalTo: view.trailingAnchor),
             table.bottomAnchor.constraint(equalTo: view.bottomAnchor)
         ])
-        
     }
     
     private func setUpActivityIndicator() {
@@ -63,26 +62,25 @@ class MainViewController: UIViewController {
     }
 
     private func setUpSortButton() {
-        let sortByDate = UIAction(title: "By Date", image: nil) { action in
+        let sortByDefault = UIAction(title: "By Default") { _ in
+            self.viewModel.mapCellData()
+            self.reloadTableView()
+        }
+        
+        let sortByDate = UIAction(title: "By Date", image: nil) { _ in
             self.cellDataSource.sort(by: { $0.postDate < $1.postDate })
             self.reloadTableView()
         }
         
-        let sortByLikes = UIAction(title: "By Likes", image: nil) { action in
+        let sortByLikes = UIAction(title: "By Likes", image: nil) { _ in
             self.cellDataSource.sort(by: { $0.likesCount > $1.likesCount })
             self.reloadTableView()
         }
         
-        let menu = UIMenu(title: "Sort", options: .displayInline, children: [sortByDate, sortByLikes])
+        let menu = UIMenu(title: "Sort", options: .displayInline, children: [sortByDefault, sortByDate, sortByLikes])
         
         navigationItem.rightBarButtonItem = UIBarButtonItem(image: UIImage(systemName: "arrow.up.and.down.text.horizontal"), menu: menu)
         navigationItem.rightBarButtonItem?.tintColor = .black
-        
-
-    }
-
-    @objc private func sortPosts() {
-        
     }
     
     func bindViewModel() {

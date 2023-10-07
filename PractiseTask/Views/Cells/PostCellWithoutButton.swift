@@ -21,7 +21,7 @@ class PostCellWithoutButton: UITableViewCell {
     var expandDidTapHandler: (() -> Void)?
     
     public static var identifier: String {
-        get{
+        get {
             "PostCellWithoutButton"
         }
     }
@@ -132,6 +132,7 @@ class PostCellWithoutButton: UITableViewCell {
         likesAndDateView.addArrangedSubview(postDate)
         
         postDate.font = .systemFont(ofSize: 17)
+        postDate.textAlignment = .right
         postDate.textColor = UIColor(red: 133/255, green: 148/255, blue: 168/255, alpha: 1)
 
         

@@ -8,6 +8,7 @@
 import Foundation
 
 class PostCellViewModel {
+    
     var id: Int
     var title: String
     var previewText: String

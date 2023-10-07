@@ -23,7 +23,6 @@ extension String {
     guard let myText = self as NSString? else {
       return 0
     }
-    // Call self.layoutIfNeeded() if your view uses auto layout
         let rect = CGSize(width: view.width, height: CGFloat.greatestFiniteMagnitude)
         let labelSize = myText.boundingRect(with: rect, options: .usesLineFragmentOrigin, attributes: [NSAttributedString.Key.font: UIFont.systemFont(ofSize: 17) as Any], context: nil)
         return Int(ceil(CGFloat(labelSize.height) / UIFont.systemFont(ofSize: 17).lineHeight))

@@ -7,11 +7,12 @@
 
 import Foundation
 
-
+// MARK: - PostModel
 struct PostModel: Codable {
     let post: Post?
 }
 
+// MARK: - Post
 struct Post: Codable {
     let postID, timeshamp: Int?
     let title, text: String?
