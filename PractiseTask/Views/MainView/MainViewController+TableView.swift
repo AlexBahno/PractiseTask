@@ -57,7 +57,7 @@ extension MainViewController: UITableViewDelegate, UITableViewDataSource {
     
     func tableView(_ tableView: UITableView, didSelectRowAt indexPath: IndexPath) {
         tableView.deselectRow(at: indexPath, animated: true)
-        let viewModel = PostDetailsViewModel(id: self.viewModel.dataSource?.posts?[indexPath.row].postID ?? 0)
+        let viewModel = PostDetailsViewModel(id: self.cellDataSource[indexPath.row].id)
         viewModel.getPost()
         let vc = PostDetailsViewController(viewModel: viewModel)
         vc.navigationItem.largeTitleDisplayMode = .never

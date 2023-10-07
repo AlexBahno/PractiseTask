@@ -32,6 +32,6 @@ extension String {
 
 extension Int {
     static func daysBetween(start: Date) -> Int {
-        return Calendar.current.dateComponents([.day], from: start, to: Date.now).day!
+        return Calendar.current.dateComponents([.day], from: start, to: Date()).day!
     }
 }

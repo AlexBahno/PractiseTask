@@ -29,7 +29,6 @@ class PostDetailsViewModel {
             strongSelf.isLoading.value = false
             switch result {
             case .success(let data):
-                print("Found post with id: \(data.post?.postID ?? 0)")
                 strongSelf.post.value = data.post
             case .failure(let error):
                 print(error)

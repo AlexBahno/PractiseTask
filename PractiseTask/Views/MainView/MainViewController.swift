@@ -22,13 +22,7 @@ class MainViewController: UIViewController {
         configure()
         bindViewModel()
     }
-    
-    override func viewDidAppear(_ animated: Bool) {
-        super.viewDidAppear(animated)
         
-        viewModel.getData()
-    }
-    
     private func configure() {
         view.backgroundColor = .white
         title = "Home"
@@ -36,6 +30,7 @@ class MainViewController: UIViewController {
         setUpTableView()
         setUpActivityIndicator()
         setUpSortButton()
+        viewModel.getData()
     }
     
     private func setUpTableView() {
@@ -68,13 +63,22 @@ class MainViewController: UIViewController {
     }
 
     private func setUpSortButton() {
-        navigationItem.rightBarButtonItem = UIBarButtonItem(
-            image: UIImage(systemName: "arrow.up.and.down.text.horizontal"),
-            style: .plain,
-            target: self,
-            action: #selector(sortPosts)
-        )
+        let sortByDate = UIAction(title: "By Date", image: nil) { action in
+            self.cellDataSource.sort(by: { $0.postDate < $1.postDate })
+            self.reloadTableView()
+        }
+        
+        let sortByLikes = UIAction(title: "By Likes", image: nil) { action in
+            self.cellDataSource.sort(by: { $0.likesCount > $1.likesCount })
+            self.reloadTableView()
+        }
+        
+        let menu = UIMenu(title: "Sort", options: .displayInline, children: [sortByDate, sortByLikes])
+        
+        navigationItem.rightBarButtonItem = UIBarButtonItem(image: UIImage(systemName: "arrow.up.and.down.text.horizontal"), menu: menu)
         navigationItem.rightBarButtonItem?.tintColor = .black
+        
+
     }
 
     @objc private func sortPosts() {

@@ -8,6 +8,7 @@
 import Foundation
 
 class PostCellViewModel {
+    var id: Int
     var title: String
     var previewText: String
     var likesCount: Int
@@ -15,6 +16,7 @@ class PostCellViewModel {
     var isExpand: Bool = false
     
     init(post: PreviewPost) {
+        id = post.postID ?? 0
         title = post.title ?? ""
         previewText = post.previewText ?? ""
         likesCount = post.likesCount ?? 0
