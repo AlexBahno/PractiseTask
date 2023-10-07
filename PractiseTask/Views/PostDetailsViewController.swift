@@ -142,7 +142,7 @@ class PostDetailsViewController: UIViewController {
         textView.font = .systemFont(ofSize: 17)
         textView.textColor = UIColor(red: 133/255, green: 148/255, blue: 168/255, alpha: 1)
         textView.numberOfLines = 0
-        textView.textAlignment = .justified
+        textView.textAlignment = .left
         
         NSLayoutConstraint.activate([
             textView.topAnchor.constraint(equalTo: titleLabel.bottomAnchor, constant: 15),
