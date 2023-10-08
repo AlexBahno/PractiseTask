@@ -20,8 +20,8 @@ class MainViewController: UIViewController {
     override func viewDidLoad() {
         super.viewDidLoad()
         configure()
-        bindViewModel()
         viewModel.getData()
+        bindViewModel()
     }
         
     private func configure() {
