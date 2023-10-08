@@ -16,10 +16,7 @@ class PostCellWithoutButton: UITableViewCell {
     var previewText = UILabel()
     var likesCount = UILabel()
     var postDate = UILabel()
-    
-    var isExpand = false
-    var expandDidTapHandler: (() -> Void)?
-    
+        
     public static var identifier: String {
         get {
             "PostCellWithoutButton"
