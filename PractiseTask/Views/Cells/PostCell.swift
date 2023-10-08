@@ -80,8 +80,7 @@ class PostCell: UITableViewCell {
         NSLayoutConstraint.activate([
             title.topAnchor.constraint(equalTo: stackView.topAnchor, constant: 15),
             title.leadingAnchor.constraint(equalTo: stackView.leadingAnchor, constant: 20),
-            title.trailingAnchor.constraint(equalTo: stackView.trailingAnchor, constant: -20),
-            title.heightAnchor.constraint(greaterThanOrEqualToConstant: 25)
+            title.trailingAnchor.constraint(equalTo: stackView.trailingAnchor, constant: -20)
         ])
     }
     
@@ -94,10 +93,9 @@ class PostCell: UITableViewCell {
         previewText.textColor = UIColor(red: 133/255, green: 148/255, blue: 168/255, alpha: 1)
         
         NSLayoutConstraint.activate([
-            previewText.topAnchor.constraint(equalTo: title.bottomAnchor),
+            previewText.topAnchor.constraint(equalTo: title.bottomAnchor, constant: 5),
             previewText.leadingAnchor.constraint(equalTo: stackView.leadingAnchor, constant: 20),
-            previewText.trailingAnchor.constraint(equalTo: stackView.trailingAnchor, constant: -20),
-            previewText.heightAnchor.constraint(greaterThanOrEqualToConstant: 55)
+            previewText.trailingAnchor.constraint(equalTo: stackView.trailingAnchor, constant: -20)
         ])
     }
     
@@ -108,10 +106,9 @@ class PostCell: UITableViewCell {
         likesAndDateView.axis = .horizontal
         
         NSLayoutConstraint.activate([
-            likesAndDateView.topAnchor.constraint(equalTo: previewText.bottomAnchor, constant: 7),
+            likesAndDateView.topAnchor.constraint(equalTo: previewText.bottomAnchor, constant: 15),
             likesAndDateView.leadingAnchor.constraint(equalTo: stackView.leadingAnchor),
-            likesAndDateView.trailingAnchor.constraint(equalTo: stackView.trailingAnchor),
-            likesAndDateView.heightAnchor.constraint(greaterThanOrEqualToConstant: 20)
+            likesAndDateView.trailingAnchor.constraint(equalTo: stackView.trailingAnchor)
         ])
     }
     
@@ -125,7 +122,7 @@ class PostCell: UITableViewCell {
         NSLayoutConstraint.activate([
             likesCount.topAnchor.constraint(equalTo: likesAndDateView.topAnchor),
             likesCount.leadingAnchor.constraint(equalTo: likesAndDateView.leadingAnchor, constant: 20),
-            likesCount.heightAnchor.constraint(greaterThanOrEqualToConstant: 20)
+            likesCount.bottomAnchor.constraint(equalTo: likesAndDateView.bottomAnchor)
         ])
     }
     
@@ -141,7 +138,7 @@ class PostCell: UITableViewCell {
         NSLayoutConstraint.activate([
             postDate.topAnchor.constraint(equalTo: likesAndDateView.topAnchor),
             postDate.trailingAnchor.constraint(equalTo: contentView.trailingAnchor, constant: -15),
-            postDate.heightAnchor.constraint(greaterThanOrEqualToConstant: 20)
+            postDate.bottomAnchor.constraint(equalTo: likesAndDateView.bottomAnchor)
         ])
     }
     

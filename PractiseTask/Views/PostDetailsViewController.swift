@@ -114,8 +114,7 @@ class PostDetailsViewController: UIViewController {
         NSLayoutConstraint.activate([
             image.topAnchor.constraint(equalTo: container.safeAreaLayoutGuide.topAnchor),
             image.leadingAnchor.constraint(equalTo: view.leadingAnchor),
-            image.trailingAnchor.constraint(equalTo: view.trailingAnchor),
-            image.heightAnchor.constraint(lessThanOrEqualToConstant: view.height)
+            image.trailingAnchor.constraint(equalTo: view.trailingAnchor)
         ])
     }
     
@@ -130,8 +129,7 @@ class PostDetailsViewController: UIViewController {
         NSLayoutConstraint.activate([
             titleLabel.topAnchor.constraint(equalTo: image.bottomAnchor, constant: 15),
             titleLabel.leadingAnchor.constraint(equalTo: container.leadingAnchor, constant: 20),
-            titleLabel.trailingAnchor.constraint(equalTo: container.trailingAnchor, constant: -20),
-            titleLabel.heightAnchor.constraint(greaterThanOrEqualToConstant: 50)
+            titleLabel.trailingAnchor.constraint(equalTo: container.trailingAnchor, constant: -20)
         ])
     }
     
@@ -159,10 +157,10 @@ class PostDetailsViewController: UIViewController {
         likesAndDateView.distribution = .fill
         
         NSLayoutConstraint.activate([
-            likesAndDateView.topAnchor.constraint(equalTo: textView.bottomAnchor, constant: 10),
+            likesAndDateView.topAnchor.constraint(equalTo: textView.bottomAnchor, constant: 15),
             likesAndDateView.leadingAnchor.constraint(equalTo: scrollView.leadingAnchor),
             likesAndDateView.trailingAnchor.constraint(equalTo: scrollView.trailingAnchor),
-            likesAndDateView.bottomAnchor.constraint(equalTo: scrollView.bottomAnchor, constant: -20)
+            likesAndDateView.bottomAnchor.constraint(equalTo: scrollView.bottomAnchor, constant: -10)
         ])
     }
     
@@ -176,7 +174,7 @@ class PostDetailsViewController: UIViewController {
         NSLayoutConstraint.activate([
             likesCount.topAnchor.constraint(equalTo: likesAndDateView.topAnchor),
             likesCount.leadingAnchor.constraint(equalTo: likesAndDateView.leadingAnchor, constant: 20),
-            likesCount.heightAnchor.constraint(greaterThanOrEqualToConstant: 20)
+            likesCount.bottomAnchor.constraint(equalTo: likesAndDateView.bottomAnchor)
         ])
     }
     
@@ -191,7 +189,7 @@ class PostDetailsViewController: UIViewController {
         NSLayoutConstraint.activate([
             postDate.topAnchor.constraint(equalTo: likesAndDateView.topAnchor),
             postDate.trailingAnchor.constraint(equalTo: view.trailingAnchor, constant: -15),
-            postDate.heightAnchor.constraint(greaterThanOrEqualToConstant: 20)
+            postDate.bottomAnchor.constraint(equalTo: likesAndDateView.bottomAnchor)
         ])
     }
     
