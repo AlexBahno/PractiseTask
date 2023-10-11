@@ -123,7 +123,7 @@ class PostDetailsViewController: UIViewController {
         container.addArrangedSubview(titleLabel)
         
         titleLabel.font = .systemFont(ofSize: 24, weight: .medium)
-        titleLabel.textColor = UIColor(red: 72/255, green: 82/255, blue: 94/255, alpha: 1)
+        titleLabel.textColor = .title
         titleLabel.numberOfLines = 0
         
         NSLayoutConstraint.activate([
@@ -138,7 +138,7 @@ class PostDetailsViewController: UIViewController {
         container.addArrangedSubview(textView)
         
         textView.font = .systemFont(ofSize: 17)
-        textView.textColor = UIColor(red: 133/255, green: 148/255, blue: 168/255, alpha: 1)
+        textView.textColor = .text
         textView.numberOfLines = 0
         textView.textAlignment = .left
         
@@ -169,7 +169,7 @@ class PostDetailsViewController: UIViewController {
         likesAndDateView.addArrangedSubview(likesCount)
         
         likesCount.font = .systemFont(ofSize: 15)
-        likesCount.textColor = UIColor(red: 133/255, green: 148/255, blue: 168/255, alpha: 1)
+        likesCount.textColor = .text
         
         NSLayoutConstraint.activate([
             likesCount.topAnchor.constraint(equalTo: likesAndDateView.topAnchor),
@@ -184,7 +184,7 @@ class PostDetailsViewController: UIViewController {
         
         postDate.font = .systemFont(ofSize: 15)
         postDate.textAlignment = .right
-        postDate.textColor = UIColor(red: 133/255, green: 148/255, blue: 168/255, alpha: 1)
+        postDate.textColor = .text
         
         NSLayoutConstraint.activate([
             postDate.topAnchor.constraint(equalTo: likesAndDateView.topAnchor),

@@ -34,3 +34,11 @@ extension Int {
         return Calendar.current.dateComponents([.day], from: start, to: Date()).day!
     }
 }
+
+extension UIColor {
+    static let title = UIColor(red: 71/255, green: 82/255, blue: 94/255, alpha: 1)
+    
+    static let text = UIColor(red: 133/255, green: 148/255, blue: 168/255, alpha: 1)
+    
+    static let buttonBackground = UIColor(red: 71/255, green: 82/255, blue: 94/255, alpha: 1)
+}

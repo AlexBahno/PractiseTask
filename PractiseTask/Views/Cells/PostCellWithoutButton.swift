@@ -70,7 +70,7 @@ class PostCellWithoutButton: UITableViewCell {
         
         title.font = .systemFont(ofSize: 20, weight: .bold)
         title.numberOfLines = 0
-        title.textColor = UIColor(red: 71/255, green: 82/255, blue: 94/255, alpha: 1)
+        title.textColor = .title
         
         NSLayoutConstraint.activate([
             title.topAnchor.constraint(equalTo: stackView.topAnchor, constant: 15),
@@ -85,7 +85,7 @@ class PostCellWithoutButton: UITableViewCell {
         
         previewText.numberOfLines = 2
         previewText.font = .systemFont(ofSize: 17)
-        previewText.textColor = UIColor(red: 133/255, green: 148/255, blue: 168/255, alpha: 1)
+        previewText.textColor = .text
         
         NSLayoutConstraint.activate([
             previewText.topAnchor.constraint(equalTo: title.bottomAnchor),
@@ -112,7 +112,7 @@ class PostCellWithoutButton: UITableViewCell {
         likesAndDateView.addArrangedSubview(likesCount)
         
         likesCount.font = .systemFont(ofSize: 17)
-        likesCount.textColor = UIColor(red: 133/255, green: 148/255, blue: 168/255, alpha: 1)
+        likesCount.textColor = .text
         
         NSLayoutConstraint.activate([
             likesCount.topAnchor.constraint(equalTo: likesAndDateView.topAnchor),
@@ -127,7 +127,7 @@ class PostCellWithoutButton: UITableViewCell {
         
         postDate.font = .systemFont(ofSize: 17)
         postDate.textAlignment = .right
-        postDate.textColor = UIColor(red: 133/255, green: 148/255, blue: 168/255, alpha: 1)
+        postDate.textColor = .text
 
         
         NSLayoutConstraint.activate([

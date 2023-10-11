@@ -75,7 +75,7 @@ class PostCell: UITableViewCell {
         
         title.font = .systemFont(ofSize: 20, weight: .bold)
         title.numberOfLines = 0
-        title.textColor = UIColor(red: 71/255, green: 82/255, blue: 94/255, alpha: 1)
+        title.textColor = .title
         
         NSLayoutConstraint.activate([
             title.topAnchor.constraint(equalTo: stackView.topAnchor, constant: 15),
@@ -90,7 +90,7 @@ class PostCell: UITableViewCell {
         
         previewText.numberOfLines = 2
         previewText.font = .systemFont(ofSize: 17)
-        previewText.textColor = UIColor(red: 133/255, green: 148/255, blue: 168/255, alpha: 1)
+        previewText.textColor = .text
         
         NSLayoutConstraint.activate([
             previewText.topAnchor.constraint(equalTo: title.bottomAnchor, constant: 5),
@@ -117,7 +117,7 @@ class PostCell: UITableViewCell {
         likesAndDateView.addArrangedSubview(likesCount)
         
         likesCount.font = .systemFont(ofSize: 17)
-        likesCount.textColor = UIColor(red: 133/255, green: 148/255, blue: 168/255, alpha: 1)
+        likesCount.textColor = .text
         
         NSLayoutConstraint.activate([
             likesCount.topAnchor.constraint(equalTo: likesAndDateView.topAnchor),
@@ -132,7 +132,7 @@ class PostCell: UITableViewCell {
         
         postDate.font = .systemFont(ofSize: 17)
         postDate.textAlignment = .right
-        postDate.textColor = UIColor(red: 133/255, green: 148/255, blue: 168/255, alpha: 1)
+        postDate.textColor = .text
 
         
         NSLayoutConstraint.activate([
@@ -148,7 +148,7 @@ class PostCell: UITableViewCell {
         
         expandButton.setTitle("Expand", for: .normal)
         expandButton.setTitleColor(.white, for: .normal)
-        expandButton.backgroundColor = UIColor(red: 71/255, green: 82/255, blue: 94/255, alpha: 1)
+        expandButton.backgroundColor = .buttonBackground
         expandButton.titleLabel?.font = .systemFont(ofSize: 17)
         expandButton.addTarget(self, action: #selector(expandPost), for: .touchUpInside)
         expandButton.layer.cornerRadius = 8
