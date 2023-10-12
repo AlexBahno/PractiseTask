@@ -148,7 +148,7 @@ final class PostCell: UITableViewCell {
         expandButton.translatesAutoresizingMaskIntoConstraints = false
         stackView.addArrangedSubview(expandButton)
         
-        expandButton.setTitle("Expand", for: .normal)
+        expandButton.setTitle(.expand, for: .normal)
         expandButton.setTitleColor(.white, for: .normal)
         expandButton.backgroundColor = .buttonBackground
         expandButton.titleLabel?.font = .systemFont(ofSize: 17)
@@ -168,7 +168,7 @@ final class PostCell: UITableViewCell {
         self.isExpand.toggle()
         self.previewText.numberOfLines = self.isExpand ? 0 : 2
         self.previewText.layoutIfNeeded()
-        self.expandButton.setTitle(self.isExpand ? "Collapse" : "Expand", for: .normal)
+        self.expandButton.setTitle(self.isExpand ? .collapse : .expand, for: .normal)
         self.expandDidTapHandler?()
     }
     
@@ -183,6 +183,6 @@ final class PostCell: UITableViewCell {
         self.postDate.text = "\(viewModel.postDate) day ago"
         
         self.isExpand = viewModel.isExpand
-        self.expandButton.setTitle(self.isExpand ? "Collapse" : "Expand", for: .normal)
+        self.expandButton.setTitle(self.isExpand ? .collapse : .expand, for: .normal)
     }
 }

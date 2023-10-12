@@ -110,7 +110,7 @@ final class PostDetailsViewController: UIViewController {
         container.addArrangedSubview(image)
         
         image.contentMode = .scaleAspectFit
-        image.image = UIImage(systemName: "photo")
+        image.image = UIImage(systemName: .photo)
         
         NSLayoutConstraint.activate([
             image.topAnchor.constraint(equalTo: container.safeAreaLayoutGuide.topAnchor),

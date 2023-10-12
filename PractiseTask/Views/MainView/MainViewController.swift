@@ -87,7 +87,10 @@ final class MainViewController: UIViewController {
             children: [sortByDefault, sortByDate, sortByLikes]
         )
         
-        navigationItem.rightBarButtonItem = UIBarButtonItem(image: UIImage(systemName: "arrow.up.and.down.text.horizontal"), menu: menu)
+        navigationItem.rightBarButtonItem = UIBarButtonItem(
+            image: UIImage(systemName: .rightNavButton),
+            menu: menu
+        )
         navigationItem.rightBarButtonItem?.tintColor = .black
     }
     

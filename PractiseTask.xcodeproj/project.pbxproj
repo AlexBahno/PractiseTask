@@ -26,6 +26,7 @@
 		D389BDA42AD1308B0064D9F4 /* PostDetailsViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = D389BDA32AD1308B0064D9F4 /* PostDetailsViewModel.swift */; };
 		D389BDA62AD14F100064D9F4 /* ScaledHeightImageView.swift in Sources */ = {isa = PBXBuildFile; fileRef = D389BDA52AD14F100064D9F4 /* ScaledHeightImageView.swift */; };
 		D389BDAA2AD83F330064D9F4 /* CellTypes.swift in Sources */ = {isa = PBXBuildFile; fileRef = D389BDA92AD83F330064D9F4 /* CellTypes.swift */; };
+		D389BDAD2AD852290064D9F4 /* StringConstant.swift in Sources */ = {isa = PBXBuildFile; fileRef = D389BDAC2AD852290064D9F4 /* StringConstant.swift */; };
 		E20EBB9E0C26D1B9204CA9D3 /* Pods_PractiseTask.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 6F352B16F7B9B1367A6820C8 /* Pods_PractiseTask.framework */; };
 /* End PBXBuildFile section */
 
@@ -54,6 +55,7 @@
 		D389BDA32AD1308B0064D9F4 /* PostDetailsViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PostDetailsViewModel.swift; sourceTree = "<group>"; };
 		D389BDA52AD14F100064D9F4 /* ScaledHeightImageView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ScaledHeightImageView.swift; sourceTree = "<group>"; };
 		D389BDA92AD83F330064D9F4 /* CellTypes.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CellTypes.swift; sourceTree = "<group>"; };
+		D389BDAC2AD852290064D9F4 /* StringConstant.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = StringConstant.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -198,6 +200,7 @@
 			isa = PBXGroup;
 			children = (
 				D389BD6F2ACEEE480064D9F4 /* Assets.xcassets */,
+				D389BDAC2AD852290064D9F4 /* StringConstant.swift */,
 			);
 			path = Resources;
 			sourceTree = "<group>";
@@ -316,6 +319,7 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				D389BDAD2AD852290064D9F4 /* StringConstant.swift in Sources */,
 				D389BD862ACF08160064D9F4 /* NetworkConstants.swift in Sources */,
 				D389BD6B2ACEEE450064D9F4 /* MainViewController.swift in Sources */,
 				D389BD882ACF0D160064D9F4 /* MainViewController+TableView.swift in Sources */,
