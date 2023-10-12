@@ -8,14 +8,14 @@
 import Foundation
 import UIKit
 
-class PostCellWithoutButton: UITableViewCell {
+final class PostCellWithoutButton: UITableViewCell {
     
-    var stackView = UIStackView()
-    var likesAndDateView = UIStackView()
-    var title = UILabel()
-    var previewText = UILabel()
-    var likesCount = UILabel()
-    var postDate = UILabel()
+    private let stackView = UIStackView()
+    private let likesAndDateView = UIStackView()
+    private let title = UILabel()
+    private let previewText = UILabel()
+    private let likesCount = UILabel()
+    private let postDate = UILabel()
         
     public static var identifier: String {
         get {
@@ -32,6 +32,7 @@ class PostCellWithoutButton: UITableViewCell {
         fatalError()
     }
 
+    // MARK: - Reuse
     override func prepareForReuse() {
         super.prepareForReuse()
         title.text = nil
@@ -49,6 +50,7 @@ class PostCellWithoutButton: UITableViewCell {
         setupPostDate()
     }
     
+    // MARK: - SetUps
     private func setupStackView() {
         stackView.translatesAutoresizingMaskIntoConstraints = false
         contentView.addSubview(stackView)
@@ -129,7 +131,6 @@ class PostCellWithoutButton: UITableViewCell {
         postDate.textAlignment = .right
         postDate.textColor = .text
 
-        
         NSLayoutConstraint.activate([
             postDate.topAnchor.constraint(equalTo: likesAndDateView.topAnchor),
             postDate.trailingAnchor.constraint(equalTo: contentView.trailingAnchor, constant: -15),

@@ -8,24 +8,23 @@
 import UIKit
 import SDWebImage
 
-class PostDetailsViewController: UIViewController {
+final class PostDetailsViewController: UIViewController {
 
-    var post: Post?
+    private var post: Post?
     
-    let scrollView = UIScrollView()
-    let container = UIStackView()
-    var likesAndDateView = UIStackView()
-    let image = ScaledHeightImageView()
-    let titleLabel = UILabel()
-    let textView = UILabel()
-    let likesCount = UILabel()
-    let postDate = UILabel()
-    let activityIndicator = UIActivityIndicatorView()
+    private let scrollView = UIScrollView()
+    private let container = UIStackView()
+    private let likesAndDateView = UIStackView()
+    private let image = ScaledHeightImageView()
+    private let titleLabel = UILabel()
+    private let textView = UILabel()
+    private let likesCount = UILabel()
+    private let postDate = UILabel()
+    private let activityIndicator = UIActivityIndicatorView()
     
-    // viewModel
     var viewModel: PostDetailsViewModel
     
-    let dateFormatter: DateFormatter = {
+    private let dateFormatter: DateFormatter = {
         let formatter = DateFormatter()
         formatter.dateFormat = "d MMMM yyyy"
         formatter.locale = Locale(identifier: "en_US")
@@ -41,6 +40,7 @@ class PostDetailsViewController: UIViewController {
         fatalError("init(coder:) has not been implemented")
     }
     
+    // MARK: - Life Cycle
     override func viewDidLoad() {
         super.viewDidLoad()
         title = "Post"
@@ -75,6 +75,7 @@ class PostDetailsViewController: UIViewController {
         setUpActivityIndicator()
     }
     
+    // MARK: - SetUps
     private func setupScrollView() {
         scrollView.translatesAutoresizingMaskIntoConstraints = false
         view.addSubview(scrollView)
@@ -201,8 +202,9 @@ class PostDetailsViewController: UIViewController {
   
         activityIndicator.center = view.center
     }
-    
-    func bindViewModel() {
+
+    // MARK: - Binds
+    private func bindViewModel() {
         viewModel.isLoading.bind { [weak self] isLoading in
             guard let strongSelf = self, let isLoading = isLoading else {
                 return

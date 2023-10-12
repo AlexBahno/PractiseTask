@@ -21,34 +21,39 @@ extension MainViewController: UITableViewDelegate, UITableViewDataSource {
     }
     
     func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
-        if cellDataSource[indexPath.row].previewText.countLines(self.view) > 2 {
+        let postViewModel = cellDataSource[indexPath.row]
+        let cellType: CellTypes = postViewModel.previewText.countLines(self.view) > 2 ? .withButton : .withoutButton
+        
+        switch cellType {
+        case .withButton:
             guard let cell = tableView.dequeueReusableCell(
                 withIdentifier: PostCell.identifier,
                 for: indexPath
             ) as? PostCell else {
                 return UITableViewCell()
             }
+            
             cell.onExpandDidTap { [weak self] in
                 self?.cellDataSource[indexPath.row].isExpand.toggle()
                 tableView.beginUpdates()
                 tableView.endUpdates()
             }
-            let postViewModel = cellDataSource[indexPath.row]
+            cell.setupCell(viewModel: postViewModel)
+            cell.selectionStyle = .none
+            return cell
+            
+        case .withoutButton:
+            guard let cell = tableView.dequeueReusableCell(
+                withIdentifier: PostCellWithoutButton.identifier,
+                for: indexPath
+            ) as? PostCellWithoutButton else {
+                return UITableViewCell()
+            }
+            
             cell.setupCell(viewModel: postViewModel)
             cell.selectionStyle = .none
             return cell
         }
-        
-        guard let cell = tableView.dequeueReusableCell(
-            withIdentifier: PostCellWithoutButton.identifier,
-            for: indexPath
-        ) as? PostCellWithoutButton else {
-            return UITableViewCell()
-        }
-
-        let postViewModel = cellDataSource[indexPath.row]
-        cell.setupCell(viewModel: postViewModel)
-        return cell
     }
     
     func tableView(_ tableView: UITableView, heightForRowAt indexPath: IndexPath) -> CGFloat {

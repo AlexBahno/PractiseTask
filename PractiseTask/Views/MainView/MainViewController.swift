@@ -7,21 +7,27 @@
 
 import UIKit
 
-class MainViewController: UIViewController {
+enum SortOptions: String {
+    case `default` = "By Default"
+    case date = "By Date"
+    case likes = "By Likes"
+}
+
+final class MainViewController: UIViewController {
     
     let table = UITableView()
-    let activityIndicator = UIActivityIndicatorView()
+    private let activityIndicator = UIActivityIndicatorView()
     
-    // ViewModel
     var viewModel: MainViewModel = MainViewModel()
     
     var cellDataSource: [PostCellViewModel] = []
-
+    
+    // MARK: - Life cycle
     override func viewDidLoad() {
         super.viewDidLoad()
         configure()
-        viewModel.getData()
         bindViewModel()
+        viewModel.getData()
     }
         
     private func configure() {
@@ -33,6 +39,7 @@ class MainViewController: UIViewController {
         setUpSortButton()
     }
     
+    // MARK: - SetUps
     private func setUpTableView() {
         table.translatesAutoresizingMaskIntoConstraints = false
         view.addSubview(table)
@@ -62,28 +69,30 @@ class MainViewController: UIViewController {
     }
 
     private func setUpSortButton() {
-        let sortByDefault = UIAction(title: "By Default") { _ in
-            self.viewModel.mapCellData()
-            self.reloadTableView()
+        let sortByDefault = UIAction(title: SortOptions.default.rawValue) { _ in
+            self.viewModel.sortPosts(sortOption: .default)
         }
         
-        let sortByDate = UIAction(title: "By Date", image: nil) { _ in
-            self.cellDataSource.sort(by: { $0.postDate < $1.postDate })
-            self.reloadTableView()
+        let sortByDate = UIAction(title: SortOptions.date.rawValue) { _ in
+            self.viewModel.sortPosts(sortOption: .date)
         }
         
-        let sortByLikes = UIAction(title: "By Likes", image: nil) { _ in
-            self.cellDataSource.sort(by: { $0.likesCount > $1.likesCount })
-            self.reloadTableView()
+        let sortByLikes = UIAction(title: SortOptions.likes.rawValue) { _ in
+            self.viewModel.sortPosts(sortOption: .likes)
         }
         
-        let menu = UIMenu(title: "Sort", options: .displayInline, children: [sortByDefault, sortByDate, sortByLikes])
+        let menu = UIMenu(
+            title: "Sort",
+            options: .displayInline,
+            children: [sortByDefault, sortByDate, sortByLikes]
+        )
         
         navigationItem.rightBarButtonItem = UIBarButtonItem(image: UIImage(systemName: "arrow.up.and.down.text.horizontal"), menu: menu)
         navigationItem.rightBarButtonItem?.tintColor = .black
     }
     
-    func bindViewModel() {
+    // MARK: - Binds
+    private func bindViewModel() {
         viewModel.isLoading.bind { [weak self] isLoading in
             guard let strongSelf = self, let isLoading = isLoading else {
                 return

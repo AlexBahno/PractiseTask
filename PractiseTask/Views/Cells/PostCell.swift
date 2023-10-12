@@ -7,15 +7,15 @@
 
 import UIKit
 
-class PostCell: UITableViewCell {
+final class PostCell: UITableViewCell {
     
-    var stackView = UIStackView()
-    var likesAndDateView = UIStackView()
-    var title = UILabel()
-    var previewText = UILabel()
-    var likesCount = UILabel()
-    var postDate = UILabel()
-    var expandButton = UIButton(type: .system)
+    private let stackView = UIStackView()
+    private let likesAndDateView = UIStackView()
+    private let title = UILabel()
+    private let previewText = UILabel()
+    private let likesCount = UILabel()
+    private let postDate = UILabel()
+    private let expandButton = UIButton(type: .system)
     
     var isExpand = false
     var expandDidTapHandler: (() -> Void)?
@@ -34,7 +34,8 @@ class PostCell: UITableViewCell {
     required init?(coder: NSCoder) {
         fatalError()
     }
-
+    
+    // MARK: - Reuse
     override func prepareForReuse() {
         super.prepareForReuse()
         title.text = nil
@@ -54,6 +55,7 @@ class PostCell: UITableViewCell {
         setupExpandButton()
     }
     
+    // MARK: - SetUps
     private func setupStackView() {
         stackView.translatesAutoresizingMaskIntoConstraints = false
         contentView.addSubview(stackView)

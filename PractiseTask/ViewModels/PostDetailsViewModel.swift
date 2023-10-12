@@ -7,7 +7,12 @@
 
 import Foundation
 
-class PostDetailsViewModel {
+protocol PostDetailsViewModelProtocol {
+    
+    func getPost()
+}
+
+class PostDetailsViewModel: PostDetailsViewModelProtocol {
     
     var isLoading: Observable<Bool> = Observable(false)
     var post: Observable<Post> = Observable(nil)

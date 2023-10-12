@@ -25,6 +25,7 @@
 		D389BDA22AD12F0E0064D9F4 /* Post.swift in Sources */ = {isa = PBXBuildFile; fileRef = D389BDA12AD12F0E0064D9F4 /* Post.swift */; };
 		D389BDA42AD1308B0064D9F4 /* PostDetailsViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = D389BDA32AD1308B0064D9F4 /* PostDetailsViewModel.swift */; };
 		D389BDA62AD14F100064D9F4 /* ScaledHeightImageView.swift in Sources */ = {isa = PBXBuildFile; fileRef = D389BDA52AD14F100064D9F4 /* ScaledHeightImageView.swift */; };
+		D389BDAA2AD83F330064D9F4 /* CellTypes.swift in Sources */ = {isa = PBXBuildFile; fileRef = D389BDA92AD83F330064D9F4 /* CellTypes.swift */; };
 		E20EBB9E0C26D1B9204CA9D3 /* Pods_PractiseTask.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 6F352B16F7B9B1367A6820C8 /* Pods_PractiseTask.framework */; };
 /* End PBXBuildFile section */
 
@@ -52,6 +53,7 @@
 		D389BDA12AD12F0E0064D9F4 /* Post.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Post.swift; sourceTree = "<group>"; };
 		D389BDA32AD1308B0064D9F4 /* PostDetailsViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PostDetailsViewModel.swift; sourceTree = "<group>"; };
 		D389BDA52AD14F100064D9F4 /* ScaledHeightImageView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ScaledHeightImageView.swift; sourceTree = "<group>"; };
+		D389BDA92AD83F330064D9F4 /* CellTypes.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CellTypes.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -104,14 +106,14 @@
 		D389BD652ACEEE450064D9F4 /* PractiseTask */ = {
 			isa = PBXGroup;
 			children = (
+				D389BD742ACEEE480064D9F4 /* Info.plist */,
+				D389BDAB2AD84C440064D9F4 /* Resources */,
 				D389BD932ACF312E0064D9F4 /* Other */,
 				D389BD7E2ACF03AF0064D9F4 /* Classes */,
 				D389BD7D2ACEF0EE0064D9F4 /* Views */,
 				D389BD7C2ACEF0DB0064D9F4 /* ViewModels */,
 				D389BD7B2ACEF0910064D9F4 /* Networking */,
 				D389BD7A2ACEF0870064D9F4 /* Models */,
-				D389BD6F2ACEEE480064D9F4 /* Assets.xcassets */,
-				D389BD742ACEEE480064D9F4 /* Info.plist */,
 			);
 			path = PractiseTask;
 			sourceTree = "<group>";
@@ -187,8 +189,17 @@
 			children = (
 				D389BD8C2ACF1BE80064D9F4 /* PostCell.swift */,
 				D389BD9C2AD055360064D9F4 /* PostCellWithoutButton.swift */,
+				D389BDA92AD83F330064D9F4 /* CellTypes.swift */,
 			);
 			path = Cells;
+			sourceTree = "<group>";
+		};
+		D389BDAB2AD84C440064D9F4 /* Resources */ = {
+			isa = PBXGroup;
+			children = (
+				D389BD6F2ACEEE480064D9F4 /* Assets.xcassets */,
+			);
+			path = Resources;
 			sourceTree = "<group>";
 		};
 /* End PBXGroup section */
@@ -311,6 +322,7 @@
 				D389BDA02AD12D520064D9F4 /* PostDetailsViewController.swift in Sources */,
 				D389BDA42AD1308B0064D9F4 /* PostDetailsViewModel.swift in Sources */,
 				D389BD8D2ACF1BE80064D9F4 /* PostCell.swift in Sources */,
+				D389BDAA2AD83F330064D9F4 /* CellTypes.swift in Sources */,
 				D389BDA22AD12F0E0064D9F4 /* Post.swift in Sources */,
 				D389BD802ACF03BC0064D9F4 /* Observable.swift in Sources */,
 				D389BD842ACF06A10064D9F4 /* APIManger.swift in Sources */,
